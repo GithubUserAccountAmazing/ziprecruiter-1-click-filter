@@ -5,7 +5,8 @@
 
 <br>
 
-This script helps you find the best jobs on ZipRecruiter that match your qualifications and preferences. It filters out jobs that require you to visit external sites or have a low qualification grade. It adds a button on the search results page that lets you hide jobs based on these criteria. This way, you can save time and apply for jobs with one click.
+This script helps you find the best jobs on ZipRecruiter that match your qualifications and preferences. It filters out jobs that require you to visit external sites or have a low qualification grade. It adds a button on the search results page that lets you hide jobs based on these criteria. This way, you can save time and apply for jobs with one click. Be sure to read the Disclaimer and License below! 😊
+
 
 ## How to use it
 
@@ -14,9 +15,11 @@ This script helps you find the best jobs on ZipRecruiter that match your qualifi
 - Now, when you go to a ZipRecruiter search results page, you will see a new button that says "Filter Jobs".
 - Enjoy applying for jobs faster and easier!
 
+
 ## Disclaimer
 
-The purpose of this script is to be useful. This script is not intended to provide any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may violate ZipRecruiter's terms of service, privacy policy, or other policies. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I strongly advise against using this script for any purposes other than learning. Please refer to the attached GNU General Public License v3.0 documentation for more details on the license and permissions of this script.
+This script is provided for educational purposes only and does not constitute legal or professional advice. This script is not intended to provide any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may violate ZipRecruiter's terms of service, privacy policy, or other policies. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I strongly advise against using this script for any purposes other than learning. Please refer to the attached GNU General Public License v3.0 documentation for more details on the license and permissions of this script.
+
 
 ## License
 ```
