@@ -11,13 +11,13 @@
 (function() {
     'use strict';
 
-    // Define a function that selects and hides job elements based on the button class, data attribute, and qualification grade
+    let filterOn = false;
+
     function filterJobs() {
-        // Check if the current URL matches the pattern https://www.ziprecruiter.com/jobs-search?search=[USER SEARCH QUERY]
+
         let url = window.location.href;
         let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/;
 
-        // If the URL does not match, return from the function
         if (!regex.test(url)) {
             return;
         }
@@ -25,32 +25,60 @@
         // Select all job elements that have a class of "job_content"
         let jobs = document.querySelectorAll(".job_content");
 
-        // Loop through each job element
+
         for (let job of jobs) {
-            // Check if the job element contains a button with a class of "quick_apply_btn" and a data-quick-apply attribute of "one_click"
+
             let button = job.querySelector(".quick_apply_btn");
 
-            // Check if the job element contains a div with a class of "qualification_grade_badge" and a data-qualification-grade attribute of "good", "fair", or "great"
             let badge = job.querySelector(".qualification_grade_badge");
 
-            // If the button or the badge does not exist or does not meet the criteria, hide the job element
-            if (!button || button.dataset.quickApply !== "one_click" || !badge || !["good", "fair", "great"].includes(badge.dataset.qualificationGrade)) {
+            // If the filter is on and the button or the badge does not exist or does not meet the criteria, hide the job element
+            if (filterOn && (!button || button.dataset.quickApply !== "one_click" || !badge || !["good", "fair", "great"].includes(badge.dataset.qualificationGrade))) {
                 job.style.display = "none";
+            }
+
+            // If the filter is off and the job element is hidden, show it again
+            if (!filterOn && job.style.display === "none") {
+                job.style.display = "";
             }
         }
     }
 
-    // Create a button element that will trigger the filterJobs function when clicked
+    // Create a circle element to indicate the filter state
+    let circle = document.createElement("div");
+    circle.style.position = "fixed";
+    circle.style.left = "635px";
+    circle.style.bottom = "17px";
+    circle.style.zIndex = "9999";
+    circle.style.width = "10px";
+    circle.style.height = "10px";
+    circle.style.borderRadius = "50%";
+    circle.style.backgroundColor = "red"; // Default color is red
+
+    // Append the circle element to the body of the document
+    document.body.appendChild(circle);
+
     let filterButton = document.createElement("button");
-    filterButton.textContent = "Filter Jobs";
+    filterButton.textContent = "1-Click Filter";
     filterButton.style.position = "fixed";
-    filterButton.style.left = "575px";
+    filterButton.style.left = "650px";
     filterButton.style.bottom = "10px";
     filterButton.style.zIndex = "9999";
 
     // Append the button element to the body of the document
     document.body.appendChild(filterButton);
 
-    // Add an event listener to the button element that calls the filterJobs function when clicked
-    filterButton.addEventListener("click", filterJobs);
+    // Add an event listener to the button element that calls the filterJobs function and switches the filter state and the circle color when clicked
+    filterButton.addEventListener("click", function() {
+        filterOn = !filterOn;
+        filterJobs();
+        // If the filter is on, change the circle color to green
+        if (filterOn) {
+            circle.style.backgroundColor = "green";
+        }
+        // If the filter is off, change the circle color to red
+        else {
+            circle.style.backgroundColor = "red";
+        }
+    });
 })();
