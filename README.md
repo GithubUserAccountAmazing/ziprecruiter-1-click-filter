@@ -4,11 +4,18 @@
 
 <br>
 
-This script allows users to filter jobs on ZipRecruiter based on the 1-click apply button and the qualification grade. It is intended to help users find jobs that match their preferences and qualifications more easily.
+This script is a simple and convenient way to filter out jobs on ZipRecruiter that do not have a 1-click apply option or a high qualification grade. It works by creating a button on the search results page that allows you to hide jobs based on these criteria. This way, you can focus on the most relevant and easy-to-apply jobs for your search query.
 
-Purely Educational. See License for more information.
+## How to use it
 
-<br>
+- To use this script, you need to install a browser extension that allows you to run custom JavaScript code on any website. Some examples are Tampermonkey, Greasemonkey, or Violentmonkey.
+- Once you have installed the extension, create a new script and paste the code from this repository into it. Save the script and enable it.
+- Now, whenever you visit a ZipRecruiter search results page (with a URL like https://www.ziprecruiter.com/jobs-search?search=[USER SEARCH QUERY]), you will see a new button on the page that says "Filter Jobs".
+- Enjoy applying for jobs faster and easier!
+
+## Disclaimer
+
+The purpose of this script is strictly educational and it does not offer any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may infringe ZipRecruiter’s terms of service. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I advise against using it for any purposes. Please refer to the attached GNU General Public License v3.0 documentation for more details.
 
 ## License
 ```
