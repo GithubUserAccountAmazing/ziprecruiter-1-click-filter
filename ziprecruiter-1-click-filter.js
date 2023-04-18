@@ -1,53 +1,52 @@
 / ==UserScript==
 // @name         ZipRecruiter 1-Click Filter
-// @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Adds a button to hide all jobs that are not 1-Click apply on ZipRecruiter. Purely Educational: Using this may be against Ziprecruiter's terms and conditions. See LICENSE for more info.
-// @author       Originates
+// @author       github.com/originates
 // @match        https://www.ziprecruiter.com/*
 // @grant        none
 // ==/UserScript==
 
+
+// This script filters the jobs on ZipRecruiter based on some criteria
 (function() {
     'use strict';
 
-    let filterOn = false;
+    let filterOn = false; // A flag to indicate whether the filter is on or off
 
     function filterJobs() {
 
-        let url = window.location.href;
-        let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/;
+        let url = window.location.href; // Get the current URL
+        let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/; // A regular expression to match the search page
 
         if (!regex.test(url)) {
-            return;
+            return; // If the URL is not a search page, do nothing
         }
 
-        // Select all job elements that have a class of "job_content"
-        let jobs = document.querySelectorAll(".job_content");
+        let jobs = document.querySelectorAll(".job_content"); // Get all the job elements on the page
 
 
         for (let job of jobs) {
 
-            let button = job.querySelector(".quick_apply_btn");
+            let button = job.querySelector(".quick_apply_btn"); // Get the quick apply button of the job
 
-            let badge = job.querySelector(".qualification_grade_badge");
+            let badge = job.querySelector(".qualification_grade_badge"); // Get the qualification grade badge of the job
 
-            // If the filter is on and the button or the badge does not exist or does not meet the criteria, hide the job element
+            // If the filter is on and the job does not have a one-click apply button or a good/fair/great qualification grade, hide it
             if (filterOn && (!button || button.dataset.quickApply !== "one_click" || !badge || !["good", "fair", "great"].includes(badge.dataset.qualificationGrade))) {
                 job.style.display = "none";
             }
 
-            // If the filter is off and the job element is hidden, show it again
+            // If the filter is off and the job is hidden, show it
             if (!filterOn && job.style.display === "none") {
                 job.style.display = "";
             }
         }
     }
 
-    // Create a circle element to indicate the filter state
-    let circle = document.createElement("div");
-    circle.style.position = "fixed";
-    circle.style.left = "635px";
+    let circle = document.createElement("div"); // Create a circle element to indicate the filter status
+    circle.style.position = "fixed"; // Position it fixed on the bottom right corner
+    circle.style.right = "135px";
     circle.style.bottom = "17px";
     circle.style.zIndex = "9999";
     circle.style.width = "10px";
@@ -55,30 +54,27 @@
     circle.style.borderRadius = "50%";
     circle.style.backgroundColor = "red"; // Default color is red
 
-    // Append the circle element to the body of the document
-    document.body.appendChild(circle);
+    document.body.appendChild(circle); // Append it to the body
 
-    let filterButton = document.createElement("button");
-    filterButton.textContent = "1-Click Filter";
-    filterButton.style.position = "fixed";
-    filterButton.style.left = "650px";
+    let filterButton = document.createElement("button"); // Create a button element to toggle the filter
+    filterButton.textContent = "Filter Jobs"; // Set its text content
+    filterButton.style.position = "fixed"; // Position it fixed on the bottom right corner
+    filterButton.style.right = "50px";
     filterButton.style.bottom = "10px";
     filterButton.style.zIndex = "9999";
 
-    // Append the button element to the body of the document
-    document.body.appendChild(filterButton);
+    document.body.appendChild(filterButton); // Append it to the body
 
-    // Add an event listener to the button element that calls the filterJobs function and switches the filter state and the circle color when clicked
+
     filterButton.addEventListener("click", function() {
-        filterOn = !filterOn;
-        filterJobs();
-        // If the filter is on, change the circle color to green
+        filterOn = !filterOn; // Toggle the filter flag
+        filterJobs(); // Call the filter function
+
         if (filterOn) {
-            circle.style.backgroundColor = "green";
+            circle.style.backgroundColor = "green"; // Change the circle color to green if the filter is on
         }
-        // If the filter is off, change the circle color to red
         else {
-            circle.style.backgroundColor = "red";
+            circle.style.backgroundColor = "red"; // Change the circle color to red if the filter is off
         }
     });
 })();
