@@ -1,4 +1,4 @@
-<br><h1 align="center">ZipRecruiter 1-Click Filter:sparkles:</h1>
+<br><h1 align="center">ZipRecruiter 1-Click Filter 🖱️:sparkles:</h1> 
 
 #### <p align="center">A convenient tool to streamline your job search on ZipRecruiter.</p>
 #### <p align="center">...because sometimes you just don't want to visit 100's of external sites to apply for jobs.</p>
@@ -16,7 +16,7 @@ This script helps you find the best jobs on ZipRecruiter that match your qualifi
 
 ## Disclaimer
 
-The purpose of this script is strictly educational and it does not offer any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may infringe ZipRecruiter’s terms of service. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I advise against using it for any purposes. Please refer to the attached GNU General Public License v3.0 documentation for more details.
+The purpose of this script is to be useful. This script is not intended to provide any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may violate ZipRecruiter's terms of service, privacy policy, or other policies. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I strongly advise against using this script for any purposes other than learning. Please refer to the attached GNU General Public License v3.0 documentation for more details on the license and permissions of this script.
 
 ## License
 ```
