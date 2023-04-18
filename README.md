@@ -1,6 +1,7 @@
 <br><h1 align="center">ZipRecruiter 1-Click Filter:sparkles:</h1>
 
 #### <p align="center">A convenient tool to streamline your job search on ZipRecruiter.</p>
+#### <p align="center">...because sometimes you just don't want to visit 100's of external sites to apply for jobs.</p>
 
 <br>
 
