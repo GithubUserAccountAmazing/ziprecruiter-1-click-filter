@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ZipRecruiter 1-Click Filter
-// @version      0.1
+// @version      0.1.1
 // @description  Adds a button to hide all jobs that are not 1-Click apply on ZipRecruiter. Purely Educational: Using this may be against Ziprecruiter's terms and conditions. See LICENSE for more info.
 // @author       github.com/originates
 // @match        https://www.ziprecruiter.com/jobs-search*
@@ -9,21 +9,18 @@
 
 (function() {
     'use strict';
-
-let filterOn = false;
-
-    // Customize the excludeJobTitle array
+    // Use localStorage to store and retrieve the filter state and the excluded keywords
+    let filterOn = localStorage.getItem("filterOn") === "true" || false;
+    let excludeJobTitle = localStorage.getItem("excludeJobTitle") ? localStorage.getItem("excludeJobTitle").split(",") : [];
     let inputBox = document.createElement("input");
     inputBox.type = "text";
     inputBox.placeholder = "Enter keywords to exclude (separated by commas)";
     inputBox.style.cssText = "position: fixed; right: 175px; bottom: 12px; z-index: 9999; width: 375px";
+    inputBox.value = excludeJobTitle.join(","); // Set the input value to the stored keywords
     document.body.appendChild(inputBox);
-    // initialize an empty array
-    let excludeJobTitle = [];
     inputBox.addEventListener("change", function() {
-        // split the input by commas and assign to the array
         excludeJobTitle = inputBox.value.split(",");
-        // call the filter function after updating the array
+        localStorage.setItem("excludeJobTitle", inputBox.value); // Save the keywords to localStorage
         filterJobs();
     });
 
@@ -67,34 +64,28 @@ let filterOn = false;
 
     // Create a circle element to indicate the filter status
     let circle = document.createElement("div");
-    circle.style.position = "fixed"; // Position it fixed on the bottom right corner
-    circle.style.right = "145px";
-    circle.style.bottom = "17px";
-    circle.style.zIndex = "9999";
-    circle.style.width = "10px";
-    circle.style.height = "10px";
-    circle.style.borderRadius = "50%";
-    circle.style.backgroundColor = "red"; // Default color is red
+    circle.style.cssText = `position: fixed; right: 145px; bottom: 17px; z-index: 9999;
+    width: 10px; height: 10px; border-radius: 50%; background-color: ${filterOn ? "green" : "red"}`;
 
-    inputBox.style.display = "none";
-
-    // Append it to the body
-    document.body.appendChild(circle);
-    // Create a button element
+    // Create a button element to toggle the filter
     let filterButton = document.createElement("button");
     filterButton.textContent = "1-Click Filter";
-    filterButton.style.position = "fixed";
-    filterButton.style.right = "50px";
-    filterButton.style.bottom = "10px";
-    filterButton.style.zIndex = "9999";
+    filterButton.style.cssText = "position: fixed; right: 50px; bottom: 10px; z-index: 9999";
 
-    // Append the button to the body
-    document.body.appendChild(filterButton);
+    // Append the circle and the button to the body
+    document.body.append(circle, filterButton);
+
+    // Show/Hide inputBox and filter jobs based on the filter status
+    inputBox.style.display = filterOn ? "" : "none";
+    if (filterOn) filterJobs();
+
 
     // Add a click event listener to the button
     filterButton.addEventListener("click", function() {
         // Toggle the filter flag
         filterOn = !filterOn;
+        // Store the filter flag in localStorage
+        localStorage.setItem("filterOn", filterOn);
         // Run the filter function
         filterJobs();
 
