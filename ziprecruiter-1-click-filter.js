@@ -3,9 +3,10 @@
 // @version      0.1
 // @description  Adds a button to hide all jobs that are not 1-Click apply on ZipRecruiter. Purely Educational: Using this may be against Ziprecruiter's terms and conditions. See LICENSE for more info.
 // @author       github.com/originates
-// @match        https://www.ziprecruiter.com/*
+// @match        https://www.ziprecruiter.com/jobs-search*
 // @grant        none
 // ==/UserScript==
+
 
 (function() {
     'use strict';
@@ -19,16 +20,9 @@
     function filterJobs() {
         // Get the current URL
         let url = window.location.href;
-        // A regular expression to match the search page
-        let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/;
-
-        if (!regex.test(url)) {
-            return; // If the URL is not a search page, do nothing
-        }
 
         // Get all the job elements on the page
         let jobs = document.querySelectorAll(".job_content");
-
 
         for (let job of jobs) {
             // Get the quick apply button of the job
