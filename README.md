@@ -1,18 +1,18 @@
-<br><h1 align="center">ZipRecruiter 1-Click Filter 🖱️:sparkles:</h1> 
+<br><h1 align="center">ZipRecruiter 1-Click Filter:sparkles:</h1> 
 
-#### <p align="center">A convenient tool to streamline your job search on ZipRecruiter.</p>
-#### <p align="center">...because sometimes you just don't want to visit 100's of external sites to apply for jobs.</p>
+#### <p align="center">A convenient tool to streamline your job search on ZipRecruiter. </p>
 
 <br>
 
-This script helps you find the best jobs on ZipRecruiter that match your qualifications and preferences. It filters out jobs that require you to visit external sites or have a low qualification grade. It adds a button on the search results page that lets you hide jobs based on these criteria. This way, you can save time and apply for jobs with one click. Be sure to read the Disclaimer and License below! 😊
+A JavaScript program that filters out jobs that require external websites or have low qualification grades. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
 
+Be sure to read the Disclaimer and License below! 😊
 
 ## How to use it
 
 - To use this script, you need to install a browser extension that allows you to run custom JavaScript code on any website. Some examples are Tampermonkey, Greasemonkey, or Violentmonkey.
 - After installing the extension, create a new script and copy the code from this repository into it. Save and activate the script.
-- Now, when you go to a ZipRecruiter search results page, you will see a new button that says "Filter Jobs".
+- Now, when you go to a ZipRecruiter job search results page, you will see a new button that says "1-Click Filter".
 - Enjoy applying for jobs faster and easier!
 
 
