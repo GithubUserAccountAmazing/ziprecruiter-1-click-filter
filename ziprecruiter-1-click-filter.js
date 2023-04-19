@@ -25,7 +25,6 @@
         // Get all the job elements on the page
         let jobs = document.querySelectorAll(".job_content");
 
-
         for (let job of jobs) {
             // Get the quick apply button of the job
             let button = job.querySelector(".quick_apply_btn");
