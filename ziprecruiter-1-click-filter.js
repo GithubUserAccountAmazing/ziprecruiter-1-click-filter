@@ -7,15 +7,25 @@
 // @grant        none
 // ==/UserScript==
 
-
 (function() {
     'use strict';
 
-    let filterOn = false; // A flag to indicate whether the filter is on or off
+let filterOn = false;
 
-    // Allows you to select against key words in the job title: modify/add keywords you don't want to see.
-    // Example: let excludeJobTitle = ["Sales", "Sale"];
-    let excludeJobTitle=[];
+    // Customize the excludeJobTitle array
+    let inputBox = document.createElement("input");
+    inputBox.type = "text";
+    inputBox.placeholder = "Enter keywords to exclude (separated by commas)";
+    inputBox.style.cssText = "position: fixed; right: 175px; bottom: 12px; z-index: 9999; width: 375px";
+    document.body.appendChild(inputBox);
+    // initialize an empty array
+    let excludeJobTitle = [];
+    inputBox.addEventListener("change", function() {
+        // split the input by commas and assign to the array
+        excludeJobTitle = inputBox.value.split(",");
+        // call the filter function after updating the array
+        filterJobs();
+    });
 
     function filterJobs() {
         // Get the current URL
@@ -39,7 +49,7 @@
                 // Check if the job has a button with quick apply option
                 let hasQuickApply = button && button.dataset.quickApply === "one_click";
                 // Check if the job has a badge with a good, fair or great qualification grade
-                let hasGoodBadge = badge && ["good", "fair", "great"].includes(badge.dataset.qualificationGrade);
+                let hasGoodBadge = badge && ["good", "great"].includes(badge.dataset.qualificationGrade);
                 // Check if the job title contains any of the excluded words
                 let hasExcludedTitle = excludeJobTitle.some(word => title.includes(word));
                 // Hide the job if any of the conditions are false
@@ -66,6 +76,8 @@
     circle.style.borderRadius = "50%";
     circle.style.backgroundColor = "red"; // Default color is red
 
+    inputBox.style.display = "none";
+
     // Append it to the body
     document.body.appendChild(circle);
     // Create a button element
@@ -89,9 +101,12 @@
         // Change the circle color based on the filter flag
         if (filterOn) {
             circle.style.backgroundColor = "green";
+            // display inputBox
+            inputBox.style.display = "";
         }
         else {
             circle.style.backgroundColor = "red";
+            inputBox.style.display = "none";
         }
     });
 
