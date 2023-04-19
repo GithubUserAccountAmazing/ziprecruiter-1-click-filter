@@ -4,13 +4,22 @@
 
 <br>
 
-A JavaScript program that filters out jobs that require external websites or have low qualification grades. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
+This is a JavaScript program that filters out jobs that require external websites or have low qualification grades on ZipRecruiter. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals.
+
+This project was motivated by the need to simplify and optimize the job application process on ZipRecruiter. It solves the problem of having to scroll through many jobs that are not suitable or easy to apply for. It also helps you customize your search by excluding jobs by keywords in the title.
 
 Please read the Disclaimer and License below! 😊
 
+## Features
+
+- Only show jobs that have a quick apply button and a Fair, Good, or Great qualification grade badge
+- Toggle the filter on and off by clicking the 1-Click Filter button.
+- Exclude jobs by keywords in the title by entering them in the input box on the bottom right corner of the page (separated by commas).
+
+
 ## How to use it
 
-- To use this script, you need to install a browser extension that allows you to run custom JavaScript code on any website. Some examples are Tampermonkey, Greasemonkey, or Violentmonkey.
+- To use this script, you need to install a browser extension that allows you to run custom JavaScript code on any website. For example, you can use [Tampermonkey](https://www.tampermonkey.net/).
 - After installing the extension, create a new script and copy the code from this repository into it. Save and activate the script.
 - Now, when you go to a ZipRecruiter job search results page, you will see a new button that says "1-Click Filter".
 - Enjoy applying for jobs faster and easier!
