@@ -7,7 +7,7 @@ A JavaScript program that filters out jobs that require external websites. It ad
 
 Please read the Disclaimer and License below! 😊
 
-<p align="center"><img src="https://user-images.githubusercontent.com/105183376/233206431-08e4c647-565a-4688-81fb-eb9ccb8a5dbf.png?raw=true" alt="'additional features - search by minimum qualification grade and exclude key words from job titles" width="40%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/105183376/233206431-08e4c647-565a-4688-81fb-eb9ccb8a5dbf.png?raw=true" alt="'additional features - search by minimum qualification grade and exclude key words from job titles" width="50%"></p>
 
 ## How to use it
 
