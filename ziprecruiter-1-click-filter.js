@@ -12,6 +12,10 @@
 
     let filterOn = false; // A flag to indicate whether the filter is on or off
 
+    // Allows you to select against key words in the job title: modify/add keywords you don't want to see.
+    // Example: let excludeJobTitle = ["Sales", "Sale"];
+    let excludeJobTitle=[];
+
     function filterJobs() {
         // Get the current URL
         let url = window.location.href;
@@ -25,6 +29,7 @@
         // Get all the job elements on the page
         let jobs = document.querySelectorAll(".job_content");
 
+
         for (let job of jobs) {
             // Get the quick apply button of the job
             let button = job.querySelector(".quick_apply_btn");
@@ -32,9 +37,21 @@
             // Get the qualification grade badge of the job
             let badge = job.querySelector(".qualification_grade_badge");
 
-            // If the filter is on and the job does not have a one-click apply button or a good/fair/great qualification grade, hide it
-            if (filterOn && (!button || button.dataset.quickApply !== "one_click" || !badge || !["good", "fair", "great"].includes(badge.dataset.qualificationGrade))) {
-                job.style.display = "none";
+            // Get the job title of the job
+            let title = job.querySelector(".title").textContent;
+
+            // This code hides a job element if the filter is on and the job does not meet the criteria
+            if (filterOn) {
+                // Check if the job has a button with quick apply option
+                let hasQuickApply = button && button.dataset.quickApply === "one_click";
+                // Check if the job has a badge with a good, fair or great qualification grade
+                let hasGoodBadge = badge && ["good", "fair", "great"].includes(badge.dataset.qualificationGrade);
+                // Check if the job title contains any of the excluded words
+                let hasExcludedTitle = excludeJobTitle.some(word => title.includes(word));
+                // Hide the job if any of the conditions are false
+                if (!hasQuickApply || !hasGoodBadge || hasExcludedTitle) {
+                    job.style.display = "none";
+                }
             }
 
             // If the filter is off and the job is hidden, show it
