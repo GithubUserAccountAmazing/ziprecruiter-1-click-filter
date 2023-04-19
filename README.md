@@ -3,7 +3,7 @@
 #### <p align="center">A convenient tool to streamline your job search on ZipRecruiter by only showing 1-Click Apply jobs. </p>
 
 
-A JavaScript program that filters out jobs that require external websites. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
+This is a JavaScript program that filters out jobs that require external websites. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
 
 Please read the Disclaimer and License below! 😊
 
