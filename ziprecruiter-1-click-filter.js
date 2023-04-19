@@ -7,18 +7,25 @@
 // @grant        none
 // ==/UserScript==
 
-
 (function() {
     'use strict';
     // Use localStorage to store and retrieve the filter state and the excluded keywords
     let filterOn = localStorage.getItem("filterOn") === "true" || false;
     let excludeJobTitle = localStorage.getItem("excludeJobTitle") ? localStorage.getItem("excludeJobTitle").split(",") : [];
+    let minQualification = localStorage.getItem("minQualification") || "poor";
     let inputBox = document.createElement("input");
     inputBox.type = "text";
     inputBox.placeholder = "Enter keywords to exclude (separated by commas)";
     inputBox.style.cssText = "position: fixed; right: 175px; bottom: 12px; z-index: 9999; width: 375px";
     inputBox.value = excludeJobTitle.join(","); // Set the input value to the stored keywords
     document.body.appendChild(inputBox);
+
+    let selectBox = document.createElement("select");
+    selectBox.style.cssText = "position: fixed; right: 450px; bottom: 35px; z-index: 9999; width: 100px";
+    selectBox.innerHTML = `<option value="poor">Poor</option><option value="fair">Fair</option><option value="good">Good</option><option value="great">Great</option>`;
+    selectBox.value = minQualification;
+    document.body.appendChild(selectBox);
+
     inputBox.addEventListener("change", function() {
         let input = inputBox.value;
         // Replace ", " with ","
@@ -27,7 +34,13 @@
         excludeJobTitle = input.split(",");
         // Save the keywords to localStorage
         localStorage.setItem("excludeJobTitle", input);
-        // Run filter after updating excluded words
+        // run filter after updating excluded words
+        filterJobs();
+    });
+
+    selectBox.addEventListener("change", function() {
+        minQualification = selectBox.value;
+        localStorage.setItem("minQualification", minQualification);
         filterJobs();
     });
 
@@ -53,14 +66,19 @@
                 // Check if the job has a button with quick apply option
                 let hasQuickApply = button && button.dataset.quickApply === "one_click";
                 // Check if the job has a badge with a good, fair or great qualification grade
-                let hasGoodBadge = badge && ["fair", "good", "great"].includes(badge.dataset.qualificationGrade);
+                let hasGoodBadge = badge && ["poor", "fair", "good", "great"].indexOf(badge.dataset.qualificationGrade) >= ["poor", "fair", "good", "great"].indexOf(minQualification);
                 // Check if the job title contains any of the excluded words
                 let hasExcludedTitle = excludeJobTitle.some(word => title.includes(word));
                 // Hide the job if any of the conditions are false
                 if (!hasQuickApply || !hasGoodBadge || hasExcludedTitle) {
                     job.style.display = "none";
                 }
+                // Unhide the job if it was previously hidden but now meets the conditions
+                else if (job.style.display === "none" && hasQuickApply && hasGoodBadge && !hasExcludedTitle) {
+                    job.style.display = "";
+                }
             }
+
 
             // If the filter is off and the job is hidden, show it
             if (!filterOn && job.style.display === "none") {
@@ -82,8 +100,9 @@
     // Append the circle and the button to the body
     document.body.append(circle, filterButton);
 
-    // Show/Hide inputBox and filter jobs based on the filter status
+    // Show/Hide inputBox, selectBox, and excluded words based on the filter status
     inputBox.style.display = filterOn ? "" : "none";
+    selectBox.style.display = filterOn ? "" : "none";
     if (filterOn) filterJobs();
 
 
@@ -101,10 +120,12 @@
             circle.style.backgroundColor = "green";
             // display inputBox
             inputBox.style.display = "";
+            selectBox.style.display = "";
         }
         else {
             circle.style.backgroundColor = "red";
             inputBox.style.display = "none";
+            selectBox.style.display = "none";
         }
     });
 
