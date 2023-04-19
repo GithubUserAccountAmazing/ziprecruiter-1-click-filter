@@ -6,7 +6,7 @@
 
 A JavaScript program that filters out jobs that require external websites or have low qualification grades. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
 
-Be sure to read the Disclaimer and License below! 😊
+Please read the Disclaimer and License below! 😊
 
 ## How to use it
 
