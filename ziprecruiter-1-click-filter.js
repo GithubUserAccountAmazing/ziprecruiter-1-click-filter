@@ -7,30 +7,31 @@
 // @grant        none
 // ==/UserScript==
 
-
-// This script filters the jobs on ZipRecruiter based on some criteria
 (function() {
     'use strict';
 
     let filterOn = false; // A flag to indicate whether the filter is on or off
 
     function filterJobs() {
-
-        let url = window.location.href; // Get the current URL
-        let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/; // A regular expression to match the search page
+        // Get the current URL
+        let url = window.location.href;
+        // A regular expression to match the search page
+        let regex = /^https:\/\/www\.ziprecruiter\.com\/jobs-search\?search=.+$/;
 
         if (!regex.test(url)) {
             return; // If the URL is not a search page, do nothing
         }
 
-        let jobs = document.querySelectorAll(".job_content"); // Get all the job elements on the page
+        // Get all the job elements on the page
+        let jobs = document.querySelectorAll(".job_content");
 
 
         for (let job of jobs) {
+            // Get the quick apply button of the job
+            let button = job.querySelector(".quick_apply_btn");
 
-            let button = job.querySelector(".quick_apply_btn"); // Get the quick apply button of the job
-
-            let badge = job.querySelector(".qualification_grade_badge"); // Get the qualification grade badge of the job
+            // Get the qualification grade badge of the job
+            let badge = job.querySelector(".qualification_grade_badge");
 
             // If the filter is on and the job does not have a one-click apply button or a good/fair/great qualification grade, hide it
             if (filterOn && (!button || button.dataset.quickApply !== "one_click" || !badge || !["good", "fair", "great"].includes(badge.dataset.qualificationGrade))) {
@@ -44,9 +45,10 @@
         }
     }
 
-    let circle = document.createElement("div"); // Create a circle element to indicate the filter status
+    // Create a circle element to indicate the filter status
+    let circle = document.createElement("div");
     circle.style.position = "fixed"; // Position it fixed on the bottom right corner
-    circle.style.right = "135px";
+    circle.style.right = "145px";
     circle.style.bottom = "17px";
     circle.style.zIndex = "9999";
     circle.style.width = "10px";
@@ -54,27 +56,51 @@
     circle.style.borderRadius = "50%";
     circle.style.backgroundColor = "red"; // Default color is red
 
-    document.body.appendChild(circle); // Append it to the body
-
-    let filterButton = document.createElement("button"); // Create a button element to toggle the filter
-    filterButton.textContent = "Filter Jobs"; // Set its text content
-    filterButton.style.position = "fixed"; // Position it fixed on the bottom right corner
+    // Append it to the body
+    document.body.appendChild(circle);
+    // Create a button element
+    let filterButton = document.createElement("button");
+    filterButton.textContent = "1-Click Filter";
+    filterButton.style.position = "fixed";
     filterButton.style.right = "50px";
     filterButton.style.bottom = "10px";
     filterButton.style.zIndex = "9999";
 
-    document.body.appendChild(filterButton); // Append it to the body
+    // Append the button to the body
+    document.body.appendChild(filterButton);
 
-
+    // Add a click event listener to the button
     filterButton.addEventListener("click", function() {
-        filterOn = !filterOn; // Toggle the filter flag
-        filterJobs(); // Call the filter function
+        // Toggle the filter flag
+        filterOn = !filterOn;
+        // Run the filter function
+        filterJobs();
 
+        // Change the circle color based on the filter flag
         if (filterOn) {
-            circle.style.backgroundColor = "green"; // Change the circle color to green if the filter is on
+            circle.style.backgroundColor = "green";
         }
         else {
-            circle.style.backgroundColor = "red"; // Change the circle color to red if the filter is off
+            circle.style.backgroundColor = "red";
         }
     });
+
+    // Get the div with data-jobs-list attribute
+    let jobsListDiv = document.querySelector("[data-jobs-list]");
+
+    // Create a mutation observer to detect changes in the div
+    let observer = new MutationObserver(function(mutations) {
+        // Run the filter function for each mutation
+        mutations.forEach(function(mutation) {
+            filterJobs();
+        });
+    });
+
+    // Set the observer options to observe child list changes
+    let observerOptions = {
+        childList: true
+    };
+
+    // Start observing the div with the observer options
+    observer.observe(jobsListDiv, observerOptions);
 })();
