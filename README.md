@@ -16,11 +16,11 @@ Please read the Disclaimer and License below! 😊
 - Enjoy applying for jobs faster and easier!
 
 
-You can further customize your job search by modifying the `excludeJobTitle` variable by adding keywords that you want to filter out based on your job title preferences. For example, if you don't want to see sales jobs when searching, you can do the following:
+You can further customize your job search by utilizing the InputBox by adding keywords that you want to filter out based on your job title preferences. For example, if you are looking for a developer job and you don't want to see sales or telesales jobs, you can type those words in the InputBox and they will be excluded from your search after you click enter!
 
-```js
-let excludeJobTitle = ["Sales", "Sale", "Telesale", "Telesales"];
-```
+
+<p align="center"><img src="https://user-images.githubusercontent.com/105183376/233176312-e2211387-45a9-45e0-a7eb-c197bc255ffe.png?raw=true" alt="'type Sales, Telesales' in the input box to exclude those words" width="60%"></p>
+
 
 
 ## Contributing
