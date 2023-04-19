@@ -53,7 +53,7 @@
                 // Check if the job has a button with quick apply option
                 let hasQuickApply = button && button.dataset.quickApply === "one_click";
                 // Check if the job has a badge with a good, fair or great qualification grade
-                let hasGoodBadge = badge && ["good", "great"].includes(badge.dataset.qualificationGrade);
+                let hasGoodBadge = badge && ["fair", "good", "great"].includes(badge.dataset.qualificationGrade);
                 // Check if the job title contains any of the excluded words
                 let hasExcludedTitle = excludeJobTitle.some(word => title.includes(word));
                 // Hide the job if any of the conditions are false
