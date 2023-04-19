@@ -19,7 +19,7 @@ Be sure to read the Disclaimer and License below! 😊
 You can further customize your job search by modifying the `excludeJobTitle` variable by adding keywords that you want to filter out based on your job title preferences. For example, if you don't want to see sales jobs when searching, you can do the following:
 
 ```js
-let excludeJobTitle = ["Sales", "Sale"];
+let excludeJobTitle = ["Sales", "Sale", "Telesale", "Telesales"];
 ```
 
 
