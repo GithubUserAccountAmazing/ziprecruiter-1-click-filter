@@ -1,4 +1,4 @@
-/ ==UserScript==
+// ==UserScript==
 // @name         ZipRecruiter 1-Click Filter
 // @version      0.1
 // @description  Adds a button to hide all jobs that are not 1-Click apply on ZipRecruiter. Purely Educational: Using this may be against Ziprecruiter's terms and conditions. See LICENSE for more info.
