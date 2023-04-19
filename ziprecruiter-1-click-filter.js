@@ -7,6 +7,7 @@
 // @grant        none
 // ==/UserScript==
 
+
 (function() {
     'use strict';
     // Use localStorage to store and retrieve the filter state and the excluded keywords
@@ -19,8 +20,14 @@
     inputBox.value = excludeJobTitle.join(","); // Set the input value to the stored keywords
     document.body.appendChild(inputBox);
     inputBox.addEventListener("change", function() {
-        excludeJobTitle = inputBox.value.split(",");
-        localStorage.setItem("excludeJobTitle", inputBox.value); // Save the keywords to localStorage
+        let input = inputBox.value;
+        // Replace ", " with ","
+        input = input.replace(/, /g, ",");
+        // Split the input by ","
+        excludeJobTitle = input.split(",");
+        // Save the keywords to localStorage
+        localStorage.setItem("excludeJobTitle", input);
+        // Run filter after updating excluded words
         filterJobs();
     });
 
