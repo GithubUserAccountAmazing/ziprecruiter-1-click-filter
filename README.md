@@ -16,9 +16,20 @@ Be sure to read the Disclaimer and License below! 😊
 - Enjoy applying for jobs faster and easier!
 
 
+You can further customize your job search by modifying the `excludeJobTitle` variable by adding keywords that you want to filter out based on your job title preferences. For example, if you don't want to see sales jobs when searching, you can do the following:
+
+```js
+let excludeJobTitle = ["Sales", "Sale"];
+```
+
+
 ## Disclaimer
 
 This script is not intended to provide any guidance or assurance of any outcomes or results from its application. This script is not endorsed by or affiliated with ZipRecruiter and it may violate ZipRecruiter's terms of service, privacy policy, or other policies. I disclaim any responsibility or liability for any issues or damages that may arise from using this script and I strongly advise against using this script for any purposes other than learning. Please refer to the attached GNU General Public License v3.0 documentation for more details on the license and permissions of this script.
+
+## Contributing
+
+This project is open for contributions. If you have any suggestions, feedback, or bug reports, please feel free to open an issue or a pull request.
 
 
 ## License
