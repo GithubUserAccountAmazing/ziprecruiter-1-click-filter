@@ -140,14 +140,11 @@
             // display inputBox
             inputBox.style.display = "";
             selectBox.style.display = "";
-            checkBox.style.display = "";
         }
         else {
             circle.style.backgroundColor = "red";
             inputBox.style.display = "none";
             selectBox.style.display = "none";
-            checkBox.checked = false;
-            checkBox.style.display = "none";
         }
     });
 
