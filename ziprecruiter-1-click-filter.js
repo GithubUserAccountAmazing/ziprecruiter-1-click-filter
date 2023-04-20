@@ -72,10 +72,23 @@
                 // Hide the job if any of the conditions are false
                 if (!hasQuickApply || !hasGoodBadge || hasExcludedTitle) {
                     job.style.display = "none";
+                    // get the parent element of the job element
+                    let article = job.parentElement;
+                    // check if the parent element is an article
+                    if (article.tagName === "ARTICLE") {
+                        // hide the article element
+                        article.style.display = "none";
+                    }
                 }
                 // Unhide the job if it was previously hidden but now meets the conditions
                 else if (job.style.display === "none" && hasQuickApply && hasGoodBadge && !hasExcludedTitle) {
                     job.style.display = "";
+                    let article = job.parentElement;
+                    // check if the parent element is an article
+                    if (article.tagName === "ARTICLE") {
+                        // hide the article element
+                        article.style.display = "";
+                    }
                 }
             }
 
@@ -83,6 +96,12 @@
             // If the filter is off and the job is hidden, show it
             if (!filterOn && job.style.display === "none") {
                 job.style.display = "";
+                let article = job.parentElement;
+                // check if the parent element is an article
+                if (article.tagName === "ARTICLE") {
+                // hide the article element
+                    article.style.display = "";
+                }
             }
         }
     }
@@ -121,11 +140,14 @@
             // display inputBox
             inputBox.style.display = "";
             selectBox.style.display = "";
+            checkBox.style.display = "";
         }
         else {
             circle.style.backgroundColor = "red";
             inputBox.style.display = "none";
             selectBox.style.display = "none";
+            checkBox.checked = false;
+            checkBox.style.display = "none";
         }
     });
 
