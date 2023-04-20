@@ -1,11 +1,11 @@
 <br><h1 align="center">ZipRecruiter 1-Click Filter:sparkles:</h1> 
 
-#### <p align="center">A convenient tool to streamline your job search on ZipRecruiter by only showing 1-Click Apply jobs. </p>
+#### <p align="center">An efficient tool to optimize your job search on ZipRecruiter by only displaying 1-Click Apply jobs. </p>
 
 
-This is a JavaScript program that filters out jobs that require external websites. It adds a button on the search results page that lets you hide these jobs and focus on the most relevant and convenient opportunities for your career goals. 
+This is a JavaScript program that eliminates jobs that redirect you to external websites. It adds a button on the search results page that enables you to conceal these jobs and concentrate on the most suitable and convenient opportunities for your career objectives. 
 
-Please read the Disclaimer and License below! 😊
+Please read the Disclaimer and License below carefully! 😊
 
 <p align="center"><img src="https://user-images.githubusercontent.com/105183376/233206431-08e4c647-565a-4688-81fb-eb9ccb8a5dbf.png?raw=true" alt="'additional features - search by minimum qualification grade and exclude key words from job titles" width="50%"></p>
 
@@ -23,11 +23,16 @@ You can further customize your job search by utilizing the InputBox by adding ke
 <p align="center"><img src="https://user-images.githubusercontent.com/105183376/233176312-e2211387-45a9-45e0-a7eb-c197bc255ffe.png?raw=true" alt="'type Sales, Telesales' in the input box to exclude those words" width="60%"></p>
 
 
+## Known Issues/Limitations
+
+- Some jobs that appear to be '1-Click Apply' may require you to answer additional questions before your application is submitted. This script does not exclude these jobs from the results. 
+  - To avoid jobs that ask questions, you can use ublock to block the following element: `www.ziprecruiter.com##.ScreenModalOverlay`
+- Some employers may send you an email after you have clicked '1-Click Apply' asking you to visit an external website to 'complete your application'. This script is unable to identify these employers in advance.
+
 
 ## Contributing
 
 This project is open for contributions. If you have any suggestions, feedback, or bug reports, please feel free to open an issue or a pull request.
-
 
 
 ## Disclaimer
