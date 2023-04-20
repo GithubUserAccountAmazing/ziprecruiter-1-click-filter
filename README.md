@@ -26,7 +26,7 @@ You can further customize your job search by utilizing the InputBox by adding ke
 ## Known Issues/Limitations
 
 - Some jobs that appear to be '1-Click Apply' may require you to answer additional questions before your application is submitted. This script does not exclude these jobs from the results. 
-  - To avoid jobs that ask questions, you can use ublock to block the following element: `www.ziprecruiter.com##.ScreenModalOverlay`
+  - To avoid jobs that ask questions, you could use ublock to block the following element: `www.ziprecruiter.com##.ScreenModalOverlay`
 - Some employers may send you an email after you have clicked '1-Click Apply' asking you to visit an external website to 'complete your application'. This script is unable to identify these employers in advance.
 
 
