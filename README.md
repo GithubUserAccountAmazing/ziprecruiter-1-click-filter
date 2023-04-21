@@ -32,7 +32,7 @@ You can further customize your job search by utilizing the InputBox by adding ke
 
 ## Contributing
 
-This project is open for contributions. If you have any suggestions, feedback, or bug reports, please feel free to open an issue or a pull request.
+Thank you for your interest in this project. I welcome any suggestions, feedback, or bug reports from the community. You can reach me by email at github_user@tuta.io or simply open an issue or a pull request.
 
 
 ## Disclaimer
